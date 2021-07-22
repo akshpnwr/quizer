@@ -17,7 +17,8 @@ const Option = (props) => {
         ref={inputRef}
       />
       <label htmlFor={props.children} className={classes.label}>
-        {props.children}
+        <div className={classes.dot} />
+        <span className={classes.span}>{props.children}</span>
       </label>
     </div>
   );
