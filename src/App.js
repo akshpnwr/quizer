@@ -1,7 +1,14 @@
-import "./App.css";
+import classes from "./App.module.css";
+import Header from "./components/Header/Header";
+import Quiz from "./containers/Quiz/Quiz";
 
 function App() {
-  return <div className="App">Quizer</div>;
+  return (
+    <div className={classes.app}>
+      <Header />
+      <Quiz />
+    </div>
+  );
 }
 
 export default App;
