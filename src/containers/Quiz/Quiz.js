@@ -1,3 +1,4 @@
+import Button from "../../components/Button/Button.js";
 import Option from "../../components/Option/Option.js";
 import classes from "./Quiz.module.css";
 
@@ -10,6 +11,10 @@ const Quiz = () => {
         <Option>Teacher</Option>
         <Option>Student a</Option>
         <Option>Teacher a</Option>
+      </div>
+      <div className={classes.actions}>
+        <Button>⬅Prev</Button>
+        <Button>Next➡</Button>
       </div>
     </div>
   );

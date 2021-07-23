@@ -1,5 +1,5 @@
 .quiz {
-  width: 50%;
+  width: fit-content;
   margin: 5em auto;
 }
 
@@ -11,5 +11,15 @@
   margin-top: 1.5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  row-gap: 20px;
+  column-gap: 200px;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.actions button {
+  margin-right: 1em;
 }
