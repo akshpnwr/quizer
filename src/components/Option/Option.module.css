@@ -1,71 +1,34 @@
-/* #0069d9 */
-.input {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  height: 100%;
-  width: 70%;
-}
-
 .label {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  /* padding: 0.1em 0.1em;
-  margin: 0.5em 0.5em; */
-  border: 2px solid lightgray;
-  border-radius: 5px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-evenly;
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.dot {
-  height: 20px;
-  width: 20px;
-  background: #d9d9d9;
-  border-radius: 50%;
-  position: relative;
-}
-
-.dot::before {
-  position: absolute;
-  content: "";
-  top: 4px;
-  left: 4px;
-  width: 12px;
-  height: 12px;
-  background: #0069d9;
-  border-radius: 50%;
-  opacity: 0;
-  transform: scale(1.5);
-  transition: all 0.3s ease;
-}
-
-.input input {
+.label input {
   display: none;
 }
 
-.input input:checked:checked ~ .label,
-.input input:checked:checked ~ .input input {
-  border-color: #0069d9;
-  background: #0069d9;
+.dot {
+  width: 1em;
+  height: 1em;
+  border: 2px solid #d9d9d9;
+  border-radius: 50%;
+  margin-right: 10px;
+  padding: 2px;
+  /* background-color: #d9d9d9;s */
 }
 
-.input input:checked:checked ~ .label .dot {
-  background-color: #fff;
+.dot::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #0069d9;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 100ms ease-in transform;
 }
 
-.input input:checked:checked ~ .label .dot::before {
-  opacity: 1;
+.label input:checked + .dot::after {
   transform: scale(1);
-}
-
-.span {
-  font-size: 20px;
-  color: #808080;
-}
-.input input:checked:checked ~ .label .span {
-  color: #fff;
 }
