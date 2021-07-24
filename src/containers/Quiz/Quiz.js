@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import Button from "../../components/Button/Button.js";
 import classes from "./Quiz.module.css";
 import Question from "../../components/Question/Question";
@@ -21,31 +21,37 @@ const Q = [
   },
 ];
 
+const reducer = (state, action) => {
+  const currentIndex = Q.findIndex((q) => q === state);
+
+  if (action.type === "next") {
+    if (currentIndex >= Q.length - 1) return state;
+
+    return Q[currentIndex + 1];
+  }
+
+  if (action.type === "previous") {
+    if (currentIndex <= 0) return state;
+
+    return Q[currentIndex - 1];
+  }
+};
+
 const Quiz = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(Q[0]);
+  const [currentQuestion, dispatch] = useReducer(reducer, Q[0]);
 
-  const nextQuesHandler = () => {
-    const currentIndex = Q.findIndex((q) => q === currentQuestion);
+  // const nextQuesHandler = () => {};
 
-    if (currentIndex >= Q.length - 1) return;
-
-    setCurrentQuestion(Q[currentIndex + 1]);
-  };
-
-  const prevQuesHandler = () => {
-    const currentIndex = Q.findIndex((q) => q === currentQuestion);
-
-    if (currentIndex <= 0) return;
-
-    setCurrentQuestion(Q[currentIndex - 1]);
-  };
+  // const prevQuesHandler = () => {
+  //   const currentIndex = Q.findIndex((q) => q === currentQuestion);
+  // };
 
   return (
     <div className={classes.quiz}>
       <Question question={currentQuestion} />
       <div className={classes.actions}>
-        <Button clicked={prevQuesHandler}>⬅ Prev</Button>
-        <Button clicked={nextQuesHandler}>Next ➡</Button>
+        <Button clicked={() => dispatch({ type: "previous" })}>⬅ Prev</Button>
+        <Button clicked={() => dispatch({ type: "next" })}>Next ➡</Button>
       </div>
     </div>
   );
