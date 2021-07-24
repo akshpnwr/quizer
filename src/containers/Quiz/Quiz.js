@@ -12,7 +12,12 @@ const Q = [
   {
     question: "What is your name ? ",
     options: ["Akash", "Sahil", "Amrit", "Ganja"],
-    answer: "Student",
+    answer: "Akash",
+  },
+  {
+    question: "What is your age ? ",
+    options: ["20", "22", "10", "15"],
+    answer: "20",
   },
 ];
 
@@ -20,13 +25,19 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(Q[0]);
 
   const nextQuesHandler = () => {
-    console.log("next");
-    setCurrentQuestion(Q[1]);
+    const currentIndex = Q.findIndex((q) => q === currentQuestion);
+
+    if (currentIndex >= Q.length - 1) return;
+
+    setCurrentQuestion(Q[currentIndex + 1]);
   };
 
   const prevQuesHandler = () => {
-    console.log("next");
-    setCurrentQuestion(Q[0]);
+    const currentIndex = Q.findIndex((q) => q === currentQuestion);
+
+    if (currentIndex <= 0) return;
+
+    setCurrentQuestion(Q[currentIndex - 1]);
   };
 
   return (
